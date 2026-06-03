@@ -1,0 +1,766 @@
+:root {
+  --black: #050505;
+  --black-2: #090909;
+  --red: #9d141b;
+  --red-2: #c42029;
+  --bone: #d4c8b9;
+  --bone-2: #eee4d6;
+  --muted: #9d9287;
+  --line: rgba(212, 200, 185, .13);
+  --line-red: rgba(196, 32, 41, .45);
+  --sidebar: 235px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #050505;
+  color: var(--bone);
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(196,32,41,.12), transparent 28%),
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.016) 1px, transparent 1px);
+  background-size: auto, 80px 80px, 80px 80px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: .45;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,.15) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 50%, rgba(255,255,255,.09) 0 1px, transparent 1px);
+  background-size: 120px 120px, 190px 190px;
+  opacity: .10;
+  z-index: 4;
+  pointer-events: none;
+}
+
+h1, h2, h3, h4, .side-brand, .btn, .side-nav a {
+  font-family: Cinzel, serif;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar);
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.94), rgba(5,5,5,.86));
+  border-right: 1px solid rgba(196,32,41,.25);
+  z-index: 10;
+  padding: 38px 34px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-sigil {
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--line-red);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--red-2);
+  font-size: 1.7rem;
+  margin-bottom: 38px;
+}
+
+.side-brand {
+  color: var(--bone-2);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.side-brand strong {
+  display: block;
+  font-size: 1.42rem;
+  letter-spacing: .06em;
+}
+
+.side-brand span {
+  display: block;
+  color: var(--red-2);
+  font-size: .82rem;
+  letter-spacing: .17em;
+  margin-top: 5px;
+}
+
+.hanzi {
+  writing-mode: vertical-rl;
+  font-family: "Noto Serif SC", serif;
+  font-size: 2.25rem;
+  color: rgba(238,228,214,.72);
+  letter-spacing: .18em;
+  margin: 35px auto 10px;
+}
+
+.stamp {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--red-2);
+  color: var(--red-2);
+  font-family: "Noto Serif SC", serif;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 36px;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.side-nav a {
+  color: var(--bone);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: .82rem;
+  letter-spacing: .08em;
+  padding: 14px 0;
+  border-top: 1px solid rgba(212,200,185,.09);
+  transition: .2s;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
+  color: var(--red-2);
+}
+
+.side-icons {
+  margin-top: auto;
+  display: flex;
+  gap: 18px;
+  color: var(--bone);
+  opacity: .7;
+}
+
+main,
+.footer {
+  margin-left: var(--sidebar);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #050505;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(5,5,5,.96) 0%, rgba(5,5,5,.70) 23%, rgba(5,5,5,.16) 52%, rgba(5,5,5,.58) 100%),
+    linear-gradient(to bottom, rgba(5,5,5,.22) 0%, rgba(5,5,5,.08) 58%, #050505 100%),
+    url("assets/hero-clan-han.png");
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(.82) contrast(1.05);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  width: min(620px, calc(100% - 48px));
+  padding-top: clamp(130px, 18vh, 210px);
+  margin-left: clamp(28px, 6vw, 78px);
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 7.2vw, 6.8rem);
+  line-height: .86;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+  color: var(--bone-2);
+  text-shadow: 0 20px 55px rgba(0,0,0,.78);
+}
+
+.hero h2 {
+  margin-top: 16px;
+  color: var(--red-2);
+  font-size: clamp(1.45rem, 3.2vw, 2.75rem);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 380px;
+  margin: 26px 0 24px;
+  color: var(--red-2);
+}
+
+.divider span,
+.bottom-mark span {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--red-2), transparent);
+}
+
+.hero p {
+  font-family: Cinzel, serif;
+  color: var(--bone);
+  line-height: 1.72;
+  font-size: clamp(.92rem, 1.25vw, 1.05rem);
+  text-shadow: 0 4px 22px rgba(0,0,0,.88);
+  max-width: 570px;
+}
+
+.actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.btn {
+  min-height: 54px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bone-2);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .78rem;
+  border: 1px solid var(--line-red);
+  transition: .22s;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #7f1117, #b61b23);
+  box-shadow: 0 0 35px rgba(196,32,41,.18);
+}
+
+.btn.ghost {
+  background: rgba(0,0,0,.22);
+}
+
+.btn.red {
+  color: var(--red-2);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--red-2);
+  box-shadow: 0 0 42px rgba(196,32,41,.25);
+}
+
+.btn em {
+  font-style: normal;
+  color: var(--bone);
+  margin-left: 16px;
+  font-family: "Noto Serif SC", serif;
+}
+
+.right-calligraphy {
+  position: absolute;
+  z-index: 2;
+  right: 55px;
+  top: 82px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Noto Serif SC", serif;
+  color: rgba(238,228,214,.74);
+  font-size: 1.5rem;
+  line-height: 1.8;
+  writing-mode: vertical-rl;
+  text-shadow: 0 3px 18px rgba(0,0,0,.85);
+}
+
+.bottom-phrase {
+  position: absolute;
+  z-index: 2;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: Cinzel, serif;
+  color: rgba(238,228,214,.76);
+  padding-left: var(--sidebar);
+}
+
+.bottom-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 190px;
+  margin: 14px auto 0;
+  color: var(--red-2);
+}
+
+.section {
+  padding: 64px 70px;
+  border-bottom: 1px solid var(--line);
+  background: #060606;
+}
+
+.about {
+  position: relative;
+  display: grid;
+  grid-template-columns: .92fr 1.25fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.temple-card {
+  min-height: 335px;
+  border: 1px solid var(--line);
+  padding: 12px;
+  background: rgba(255,255,255,.02);
+}
+
+.fake-art {
+  height: 100%;
+  min-height: 310px;
+  background:
+    radial-gradient(circle at 54% 35%, rgba(196,32,41,.32), transparent 28%),
+    linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.86)),
+    url("assets/hero-clan-han.png");
+  background-size: 160%;
+  background-position: 45% center;
+  filter: contrast(1.04) brightness(.78);
+}
+
+.eyebrow {
+  color: var(--red-2);
+  font-family: Cinzel, serif;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: .78rem;
+  margin-bottom: 18px;
+}
+
+.copy h2,
+.final-grid h2 {
+  color: var(--bone-2);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.copy p,
+.final-grid p {
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 14px;
+  max-width: 760px;
+}
+
+.pillars,
+.books {
+  display: grid;
+  gap: 16px;
+}
+
+.pillars {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.pillars article,
+.books article,
+.text-list article {
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.016));
+  padding: 22px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,.36);
+  transition: .22s;
+}
+
+.pillars article:hover,
+.books article:hover {
+  border-color: var(--line-red);
+  transform: translateY(-4px);
+}
+
+.pillars div {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border: 1px solid rgba(212,200,185,.18);
+  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--bone);
+  font-family: "Noto Serif SC", serif;
+}
+
+.pillars h3,
+.books h3 {
+  color: var(--bone-2);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  font-size: .98rem;
+  margin-bottom: 12px;
+}
+
+.pillars p {
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.section-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-row a,
+.recent a,
+.back {
+  color: var(--red-2);
+  text-decoration: none;
+  font-family: Cinzel, serif;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  font-size: .78rem;
+}
+
+.books {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.cover {
+  height: 185px;
+  position: relative;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(212,200,185,.1);
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.78)),
+    url("assets/hero-clan-han.png");
+  background-size: 230%;
+  background-position: center;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(196,32,41,.27);
+}
+
+.cover span {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  writing-mode: vertical-rl;
+  color: var(--red-2);
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.5rem;
+}
+
+.books h3 {
+  text-align: left;
+  text-transform: none;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.books small {
+  color: var(--red-2);
+  font-size: .7rem;
+  text-transform: uppercase;
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quote p {
+  font-family: Cinzel, serif;
+  color: var(--bone-2);
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.final-grid {
+  display: grid;
+  grid-template-columns: .9fr 1fr .95fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+.moon-card {
+  min-height: 310px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(238,228,214,.62), transparent 23%),
+    radial-gradient(circle at 50% 35%, rgba(196,32,41,.25), transparent 35%),
+    url("assets/hero-clan-han.png");
+  background-size: 150%;
+  background-position: center bottom;
+  position: relative;
+}
+
+.moon-card span {
+  position: absolute;
+  right: 28px;
+  top: 38px;
+  writing-mode: vertical-rl;
+  color: var(--red-2);
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.2rem;
+  letter-spacing: .18em;
+}
+
+.recent {
+  border-left: 1px solid var(--line);
+  padding-left: 26px;
+}
+
+.recent a {
+  display: block;
+  color: var(--bone);
+  text-transform: none;
+  font-family: Inter, sans-serif;
+  letter-spacing: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.recent small {
+  display: block;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.recent .more {
+  color: var(--red-2);
+  border: 0;
+  margin-top: 14px;
+  font-family: Cinzel, serif;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.footer {
+  padding: 50px 70px;
+  background: #050505;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.5fr;
+  gap: 44px;
+}
+
+.footer h3 {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}
+
+.footer span,
+.footer h4 {
+  display: block;
+  color: var(--red-2);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  margin: 5px 0 16px;
+}
+
+.footer p,
+.footer a {
+  color: var(--muted);
+  text-decoration: none;
+  line-height: 1.8;
+}
+
+.footer a {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.footer form {
+  display: flex;
+  height: 50px;
+  border: 1px solid var(--line-red);
+  margin-top: 16px;
+}
+
+.footer input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  color: var(--bone);
+  padding: 0 14px;
+  outline: none;
+}
+
+.footer button {
+  width: 58px;
+  border: 0;
+  background: #7f1117;
+  color: var(--bone-2);
+}
+
+.library-page {
+  background:
+    linear-gradient(rgba(5,5,5,.9), rgba(5,5,5,.96)),
+    url("assets/hero-clan-han.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.library-page main {
+  margin-left: 0;
+}
+
+.library-main {
+  padding: 70px;
+}
+
+.library-main h1 {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  color: var(--bone-2);
+  text-transform: uppercase;
+  margin: 22px 0 40px;
+}
+
+.text-list {
+  display: grid;
+  gap: 18px;
+  max-width: 980px;
+}
+
+.text-list article {
+  padding: 28px;
+}
+
+.text-list small {
+  color: var(--red-2);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.text-list h2 {
+  color: var(--bone-2);
+  margin: 10px 0;
+}
+
+.text-list p {
+  color: var(--muted);
+}
+
+@media (max-width: 1180px) {
+  .pillars,
+  .books {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .final-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  :root { --sidebar: 0px; }
+
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: 74px;
+    padding: 12px 18px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .top-sigil,
+  .hanzi,
+  .stamp,
+  .side-icons,
+  .side-nav {
+    display: none;
+  }
+
+  .side-brand strong {
+    font-size: 1.1rem;
+  }
+
+  main,
+  .footer {
+    margin-left: 0;
+  }
+
+  .hero {
+    min-height: 760px;
+  }
+
+  .hero-bg {
+    background-position: 58% center;
+  }
+
+  .hero-text {
+    margin-left: 22px;
+    padding-top: 130px;
+  }
+
+  .right-calligraphy {
+    display: none;
+  }
+
+  .section,
+  .footer,
+  .library-main {
+    padding: 42px 22px;
+  }
+
+  .about,
+  .pillars,
+  .books {
+    grid-template-columns: 1fr;
+  }
+
+  .section-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero h1 {
+    font-size: 3.35rem;
+  }
+
+  .hero h2 {
+    font-size: 1.45rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+}
